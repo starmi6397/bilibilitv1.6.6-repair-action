@@ -15,7 +15,7 @@ jobs:
           sudo apt-get install -y apktool
       - name: Install Android SDK
         run: |
-          wget -nv https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+          curl -L -o sdk-tools-linux-4333796.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
           unzip sdk-tools-linux-4333796.zip
           mv sdk-tools-linux /opt/android-sdk
           rm sdk-tools-linux-4333796.zip
