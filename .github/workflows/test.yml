@@ -26,9 +26,7 @@ jobs:
           echo "export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools" >> $GITHUB_ENV
       - name: build-apk
         run: |
-          cd mybv/java
-          chmod u+x /build.sh
-          ./build.sh
-          cd ../..
+          chmod u+x .mybv/java/build.sh
+          ./mybv/javabuild.sh
           apktool b -c --use-aapt2 mybv
           signapk platform.x509.pem platform.pk8 ./mybv/dist/mybv.apk mybv.apk
