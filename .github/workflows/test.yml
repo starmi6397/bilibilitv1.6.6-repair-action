@@ -20,16 +20,13 @@ jobs:
           sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/bin/java
           sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac 1000
           sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
-      - name: Configure environment variables
-        run: |
-          echo "export ANDROID_HOME=/opt/android-sdk" >> $GITHUB_ENV
-          echo "export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools" >> $GITHUB_ENV
       - name: build-java
         working-directory: mybv/java
         run: |
-          run: chmod +x ./build.sh
+          chmod +x ./build.sh
           sudo ./build.sh
       - name: build-apk
+        working-directory: /
         run: |
           apktool b -c --use-aapt2 mybv
           sudo signapk platform.x509.pem platform.pk8 ./mybv/dist/mybv.apk mybv.apk
