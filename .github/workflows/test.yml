@@ -27,6 +27,7 @@ jobs:
       - name: Configure environment variables
         run: |
           echo "export PATH=$PATH:/apktool.jar" >> $GITHUB_ENV
+          echo "export PATH=$PATH:/" >> $GITHUB_ENV
       - name: build-java
         working-directory: mybv/java
         run: |
