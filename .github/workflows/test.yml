@@ -26,7 +26,7 @@ jobs:
           chmod +x ./build.sh
           sudo ./build.sh
       - name: build-apk
-        working-directory: /
+        working-directory: .
         run: |
           apktool b -c --use-aapt2 mybv
           sudo signapk platform.x509.pem platform.pk8 ./mybv/dist/mybv.apk mybv.apk
